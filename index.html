@@ -166,9 +166,8 @@
             Task
         </label>
 
-        <input class="form-control mb-4"
-        placeholder="Type your task here">
-
+        <input class="form-control mb-2" id="taskInput" placeholder="Type your task here">
+        <div id="error" class="text-danger mb-3"></div>
         <label class="mb-2">
             Priority
         </label>
@@ -191,7 +190,7 @@
 
         <div class="text-end">
 
-            <button class="btn btn-secondary">
+            <button class="btn btn-secondary" onclick="validateTask()">
                 Add
             </button>
 
@@ -200,6 +199,22 @@
     </div>
 
 </div>
+<script>
+function validateTask(){
+    let task = document.getElementById("taskInput").value.trim();
+    let error = document.getElementById("error");
+    error.innerHTML = "";
+    if(task.length === 0){
+        error.innerHTML = "Task name cannot be empty";
+        return;
+    }
+    if(task.length > 100){
+        error.innerHTML = "Task name must not exceed 100 characters";
+        return;
 
+    }
+    alert("Task added successfully");
+}
+</script>
 </body>
 </html>
